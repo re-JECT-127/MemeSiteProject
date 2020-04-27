@@ -8,6 +8,7 @@ body {
   max-width: 40em;
   margin: auto;
   padding: 1em;
+  color:currentColor;
 }
 
 .light-border {
@@ -15,6 +16,7 @@ body {
   border: 1px solid #ccc;
   padding: 1em;
   box-sizing: border-box;
+  color:currentColor;
 }
 
 ul {
@@ -46,6 +48,7 @@ figure {
 
 .form-wrapper {
   width: 33%;
+
 }
 
 input, button, select {
