@@ -5,7 +5,8 @@ const express = require('express');
 const app = express();
 const port = 3000;
 const memeRoute = require('./routes/memeRoute');
-//const userRoute = require('./routes/memeRoute');
+const userRoute = require('./routes/userRoute');
+
 
 app.use(cors());
 app.use(express.json()) // for parsing application/json
@@ -14,5 +15,6 @@ app.use(express.static('public'));
 app.use(express.static('uploads'));
 
 app.use('/meme', memeRoute);
+app.use('/user', userRoute);
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

@@ -1,7 +1,6 @@
 'use strict';
 const memeModel = require('../models/memeModel');
 const {validationResult} = require('express-validator');
-
 const memes = memeModel.memes;
 
 
