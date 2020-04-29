@@ -32,11 +32,13 @@ app.use(express.static('uploads'));
 app.use('/meme', memeRoute);
 app.use('/user', userRoute);
 
+
 app.use(session({
 	secret: '12345', //VERY SECRET HERE
 	resave: true,
 	saveUninitialized: true
 }));
+
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 

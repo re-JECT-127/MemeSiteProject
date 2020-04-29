@@ -2,7 +2,6 @@
 const url = 'http://localhost:3000'; // change url when uploading to server
 
 // select existing html elements
-const addForm = document.querySelector('#addMemeForm');
 const modForm = document.querySelector('#modMemeForm');
 const ul = document.querySelector('ul');
 const userLists = document.querySelectorAll('.add-owner');

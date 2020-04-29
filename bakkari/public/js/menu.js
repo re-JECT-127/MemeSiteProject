@@ -1,3 +1,7 @@
+'use strict'
+const url = 'http://localhost:3000';
+const addMemeForm = document.querySelector('#addMemeForm');
+
 const themeMap = {
     dark: "light",
     light: "solar",
@@ -42,6 +46,20 @@ const themeMap = {
     loginbox.style.display = "block";
    }
 });
+
+addMemeForm.addEventListener('submit', async (evt) => {
+  evt.preventDefault();
+  const fd = new FormData(addMemeForm);
+  const fetchOptions = {
+    method: 'POST',
+    body: fd,
+  };
+  const response = await fetch(url + '/meme', fetchOptions);
+  const json = await response.json();
+  console.log('add response', json);
+  getMeme();
+});
+
 
 
 
