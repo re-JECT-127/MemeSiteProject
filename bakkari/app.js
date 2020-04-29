@@ -43,12 +43,13 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
 app.get('/', function(request, response) {
-	response.sendFile(path.join(__dirname + '/login.html'));
+	response.sendFile(path.join(__dirname + '/index.html'));
 });
 
 app.post('/auth', function(request, response) {
 	var email = request.body.email;
 	var password = request.body.password;
+	console.log('CLICKED /AUTH');
 	if (email && password) {
 		connection.query('SELECT * FROM meme_user WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
 			if (results.length > 0) {
@@ -68,7 +69,7 @@ app.post('/auth', function(request, response) {
 
 app.get('/home', function(request, response) {
 	if (request.session.loggedin) {
-		response.send('Welcome back, ' + request.session.email + '!'); //this is pretty ugly
+		response.send('Welcome back, ' + request.session.email + '!');
 	} else {
 		response.send('Please login to view this page!');
 	}

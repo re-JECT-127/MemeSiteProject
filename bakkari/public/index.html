@@ -128,17 +128,20 @@
       <!-- login -->
       <div class="login-box">
         <h1>Login</h1>
+        <form action="http://localhost:3000/auth" method="POST">
         <div class="textbox">
           <i class="user-box"></i>
-          <input type="text" placeholder="Username">
+          <input type="text" name="email" placeholder="Email">
         </div>
       
         <div class="textbox">
           <i class="password-box"></i>
-          <input type="password" placeholder="Password">
+          <input type="password" name="password" placeholder="Password">
         </div>
       
-        <input type="button" class="btn" value="Sign in">
+        <input type="submit" class="btn" value="Sign in">
+      </form>
+
         <input id="reg" type="button" class="btn" value="Register">
       </div>
         <!-- register -->
@@ -159,7 +162,7 @@
           <input type="password" placeholder="Password">
         </div>
       
-        <input type="button" class="btn" value="Create account">
+        <input type="submit" class="btn" value="Create account">
         
       </div>
 <!--End of menubar code-->
