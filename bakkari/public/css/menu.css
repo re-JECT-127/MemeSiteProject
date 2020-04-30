@@ -262,7 +262,7 @@
   left: 50%;
   transform: translate(-50%,-50%);
   color: var(--text-primary);
-  display: none;
+  
 }
 .login-box h1{
   float: left;
