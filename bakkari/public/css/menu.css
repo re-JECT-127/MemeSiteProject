@@ -197,6 +197,7 @@
   
     .menu:hover {
       width: 16rem;
+      
     }
   
     .menu:hover .link-text {
@@ -431,5 +432,15 @@ button{
   background: var(--bg-secondary);
   color: var(--text-secondary);
   transition: var(--transition-speed);
+}
+
+/* kuvat */
+
+.card {
+  background-color: var(--bg-primary);
+}
+
+.card-like {
+  filter: grayscale(100%);
 }
 
