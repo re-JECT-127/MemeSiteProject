@@ -146,26 +146,29 @@
         <input id="reg" type="button" class="btn" value="Register">
       </div>
         <!-- register -->
-      <div class="register-box">
-        <h1>Register</h1>
-        <div class="textbox">
-          <i class="user-box"></i>
-          <input type="text" placeholder="Username">
+        <div class="register-box">
+          <h1>Register</h1>
+          <form action="http://localhost:3000/user" method="post" id="addUserForm">
+          <div class="textbox">
+            <i class="user-box"></i>
+            <input type="text" name="name" placeholder="Username" required>
+          </div>
+  
+          <div class="textbox">
+            <i class="email-box"></i>
+            <input type="email" name="email" placeholder="Email" required>
+          </div>
+  
+          <div class="textbox">
+            <i class="password-box"></i>
+            <input type="password" name="password" placeholder="Password" pattern="(?=.*[A-Z]).{8,}" required>
+          </div>
+  
+          <input type="submit" class="btn" value="Create account">
+        </form>
+  
         </div>
-
-        <div class="textbox">
-          <i class="email-box"></i>
-          <input type="text" placeholder="Email">
-        </div>
-      
-        <div class="textbox">
-          <i class="password-box"></i>
-          <input type="password" placeholder="Password">
-        </div>
-      
-        <input type="submit" class="btn" value="Create account">
-        
-      </div>
+  
 <!--End of menubar code-->
 
 

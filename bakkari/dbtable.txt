@@ -15,19 +15,13 @@ ALTER TABLE `memes`
 ALTER TABLE `memes`
   MODIFY `meme_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
-
 CREATE TABLE `meme_user` (
-  `user_id` int(11) NOT NULL,
+  `user_id` int NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
   `email` text NOT NULL,
-  `password` text NOT NULL
+  `password` text NOT NULL,
+   PRIMARY KEY (user_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-ALTER TABLE `meme_user`
-  ADD PRIMARY KEY (`user_id`);
-
-ALTER TABLE `meme_user`
-MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 
-insert into meme_user (user_id, name, email, password) VALUES (3, 'testi', 'testi@testi.fi', 'testi') 

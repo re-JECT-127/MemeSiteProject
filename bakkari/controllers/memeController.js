@@ -37,7 +37,8 @@ if (!errors.isEmpty()) {
 try {
   const meme = await memeModel.insertMeme(inMeme);
   console.log('inserted', meme);
-  res.send(`added meme: ${meme.insertID}`);
+  //res.send(`added meme: ${meme.insertID}`);
+  res.redirect('/');
 } catch (e){
   console.error('problem with meme_post in memeController', e);
   res.status('500').send(`database insert error: ${e.message}`);
