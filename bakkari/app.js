@@ -7,7 +7,7 @@ const express = require('express');
 var session = require('express-session'); //added
 var bodyParser = require('body-parser'); //added
 var path = require('path'); //added
-//const pool = require('./database/db'); <--THIS DOES NOT WORK. WHY THE HELL NOT?
+const pool = require('./database/db'); // Ok this didn't work before. now it works. brilliant
 
 const app = express();
 const port = 3000;
@@ -16,13 +16,14 @@ const userRoute = require('./routes/userRoute');
 
 
 //instead of pool have to use this. pool just refuses to work... it worked on mi other test app tho... so who knows... might be a plot of Sauron.
-var connection = mysql.createConnection({ 
-	host     : 'localhost',
-	user     : '', //ADD THIS
-	password : '', //ADD THIS
-    database : '', //ADD THIS
-    port     :  3306
-});
+//EDIT: dont need this nightmare no more....
+// var connection = mysql.createConnection({ 
+// 	host     : 'localhost',
+// 	user     : '', //ADD THIS
+// 	password : '', //ADD THIS
+//     database : '', //ADD THIS
+//     port     :  3306
+// });
 
 app.use(cors());
 app.use(express.json()) // for parsing application/json
@@ -57,7 +58,7 @@ app.post('/auth', function(request, response) {
 	var password = request.body.password;
 	console.log('CLICKED /AUTH');
 	if (email && password) {
-		connection.query('SELECT * FROM meme_user WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
+		pool.query('SELECT * FROM meme_user WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
 			if (results.length > 0) {
 				request.session.loggedin = true;
 				request.session.email = email;
