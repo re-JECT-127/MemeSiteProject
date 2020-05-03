@@ -1,9 +1,9 @@
 'use strict'
 const url = 'http://localhost:3000';
-// const addMemeForm = document.querySelector('#addMemeForm');
-const addUserForm = document.querySelector('#addUserForm');
+const addMemeForm = document.querySelector('#addMemeForm');
 
-/*
+
+let tmp = 0;
 const themeMap = {
     dark: "light",
     light: "solar",
@@ -35,7 +35,7 @@ const themeMap = {
    }
 
 });
-*/
+
 
   let reg = document.getElementById('reg')
   reg.addEventListener('click', event =>  {
@@ -49,18 +49,18 @@ const themeMap = {
    }
 });
 
-// addMemeForm.addEventListener('submit', async (evt) => {
-//   evt.preventDefault();
-//   const fd = new FormData(addMemeForm);
-//   const fetchOptions = {
-//     method: 'POST',
-//     body: fd,
-//   };
-//   const response = await fetch(url + '/meme', fetchOptions);
-//   const json = await response.json();
-//   console.log('add response', json);
-//   getMeme();
-// });
+addMemeForm.addEventListener('submit', async (evt) => {
+  evt.preventDefault();
+  const fd = new FormData(addMemeForm);
+  const fetchOptions = {
+    method: 'POST',
+    body: fd,
+  };
+  const response = await fetch(url + '/meme', fetchOptions);
+  const json = await response.json();
+  console.log('add response', json);
+  getMeme();
+});
 
 
 function openMenu() {
@@ -124,19 +124,6 @@ let menu = document.getElementById('menu');
     console.log("toimiiko")
 
    };
-
-
-  addUserForm.addEventListener('submit', async (evt) => {
-    evt.preventDefault();
-    const fd = new FormData(addUserForm);
-    const fetchOptions = {
-      method: 'POST',
-      body: fd,
-    };
-    const response = await fetch(url + '/user', fetchOptions);
-    const json = await response.json();
-    console.log('add response', json);
-  });
 
 
 

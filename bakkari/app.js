@@ -18,9 +18,9 @@ const userRoute = require('./routes/userRoute');
 //instead of pool have to use this. pool just refuses to work... it worked on mi other test app tho... so who knows... might be a plot of Sauron.
 var connection = mysql.createConnection({ 
 	host     : 'localhost',
-	user     : '', //ADD THIS
-	password : '', //ADD THIS
-    database : '', //ADD THIS
+	user     : 'miskang', //ADD THIS
+	password : 'sks42glhf', //ADD THIS
+    database : 'miskang', //ADD THIS
     port     :  3306
 });
 
