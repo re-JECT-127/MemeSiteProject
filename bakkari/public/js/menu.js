@@ -41,19 +41,19 @@ const themeMap = {
 
 let menu = document.getElementById('menu');
   menu.addEventListener("mouseover", event => {
-    let koko = 200 
+    let koko = 20 
     let paska = document.getElementById('card-holder') 
     
-    paska.style.marginLeft = `${koko}px`;
+    paska.style.marginLeft = `${koko}%`;
     paska.style.transitionDuration = "600ms";
     
    });
    menu.addEventListener("mouseout", event => {
-    let koko = -0 
+    let koko = 0 
     
     let paska = document.getElementById('card-holder') 
     
-    paska.style.marginLeft = `${koko}px`;
+    paska.style.marginLeft = `${koko}%`;
     paska.style.transitionDuration = "600ms";
     
    });
