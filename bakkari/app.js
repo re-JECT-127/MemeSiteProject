@@ -13,6 +13,8 @@ const app = express();
 const port = 3000;
 const memeRoute = require('./routes/memeRoute');
 const userRoute = require('./routes/userRoute');
+const tagRoute = require('./routes/tagRoute');
+
 
 
 //instead of pool have to use this. pool just refuses to work... it worked on mi other test app tho... so who knows... might be a plot of Sauron.
@@ -33,6 +35,8 @@ app.use(express.static('uploads'));
 
 app.use('/meme', memeRoute);
 app.use('/user', userRoute);
+app.use('/tag', tagRoute);
+
 
 
 app.use(session({
@@ -56,6 +60,7 @@ app.get('/login', checkNotAuthenticated, (request, response) => {
 app.post('/auth', function(request, response) {
 	var email = request.body.email;
 	var password = request.body.password;
+	console.log('CLICKED /AUTH');
 	if (email && password) {
 		pool.query('SELECT * FROM meme_user WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
 			if (results.length > 0) {
@@ -100,7 +105,5 @@ function checkNotAuthenticated(request,response, next) {
 	};
 	return next();
 };
-
-
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));

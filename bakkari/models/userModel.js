@@ -3,21 +3,6 @@ const pool = require('../database/db');
 const promisePool = pool.promise();
 
 
-const users = [
-  {
-    id: '1',
-    name: 'John Doe',
-    email: 'john@metropolia.fi',
-    password: '1234',
-  },
-  {
-    id: '2',
-    name: 'Jane Doez',
-    email: 'jane@metropolia.fi',
-    password: 'qwer',
-  },
-];
-
 const getUserList = async () =>{
 //SELECT user_id, name, email FROM wop_user
 try {
@@ -80,7 +65,7 @@ const updateUser = async (user) => {
 }; 
 
 module.exports = {
-  users,
+  
   getUser,
   getUserLogin,
   getUserList,

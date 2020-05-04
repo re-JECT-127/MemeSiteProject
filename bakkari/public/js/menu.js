@@ -1,6 +1,8 @@
 'use strict'
 const url = 'http://localhost:3000';
 const addMemeForm = document.querySelector('#addMemeForm');
+const tagLists = document.querySelectorAll('.add-tag');
+
 
 const themeMap = {
     dark: "light",
@@ -25,6 +27,36 @@ const themeMap = {
   
   document.getElementById('themeButton').onclick = toggleTheme;
  
+
+   // create user options to <select>
+   const createTagOptions = (tags) => {
+    tagLists.forEach((list) => {
+      // clear user list
+      list.innerHTML = '';
+      tags.forEach((tag) => {
+        // create options with DOM methods
+        const option = document.createElement('option');
+        option.value = tag.tag_id;
+        option.innerHTML = tag.name;
+        option.classList.add('light-border');
+        list.appendChild(option);
+      });
+    });
+  };
+  
+  // get users to form options
+  const getTags = async () => {
+    try {
+      const response = await fetch(url + '/tag');
+      const tags = await response.json();
+      createTagOptions(tags);
+    }
+    catch (e) {
+      console.log(e.message);
+    }
+  };
+  getTags();
+  
 
 addMemeForm.addEventListener('submit', async (evt) => {
   evt.preventDefault();
@@ -85,7 +117,6 @@ let menu = document.getElementById('menu');
     cardInfo.appendChild(like);
 
     console.log("toimiiko")
-
    };
 
 

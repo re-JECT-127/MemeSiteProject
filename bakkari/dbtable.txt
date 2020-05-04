@@ -1,19 +1,17 @@
 CREATE TABLE `memes` (
-  `meme_id` int(11) NOT NULL,
+  `meme_id` int NOT NULL AUTO_INCREMENT,
   `name` text NOT NULL,
-  `filename` text NOT NULL
+  `filename` text NOT NULL,
+   `tag` text NOT NULL,
+   PRIMARY KEY (meme_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 
-INSERT INTO `memes` (`meme_id`, `name`, `filename`) VALUES
-(1, 'Lotr',  'https://blogi.oulunluuppi.fi/wp-content/uploads/2019/08/meme.jpg'),
-(2, 'Lotr2',  'https://blogi.oulunluuppi.fi/wp-content/uploads/2019/08/meme.jpg');
 
-ALTER TABLE `memes`
-  ADD PRIMARY KEY (`meme_id`);
+INSERT INTO `memes` (`meme_id`, `name`, `filename`, `tag`) VALUES
+(1, 'Lotr',  'https://blogi.oulunluuppi.fi/wp-content/uploads/2019/08/meme.jpg', 'reaction'),
+(2, 'Lotr2',  'https://blogi.oulunluuppi.fi/wp-content/uploads/2019/08/meme.jpg', 'funny');
 
-ALTER TABLE `memes`
-  MODIFY `meme_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 CREATE TABLE `meme_user` (
   `user_id` int NOT NULL AUTO_INCREMENT,
@@ -22,6 +20,16 @@ CREATE TABLE `meme_user` (
   `password` text NOT NULL,
    PRIMARY KEY (user_id)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+CREATE TABLE `tags` (
+  `tag_id` int NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+   PRIMARY KEY (tag_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+
+INSERT INTO `tagss` (`tag_id`, `name`) VALUES
+(1, 'reaction'),
+(2, 'funny');
 
 
 

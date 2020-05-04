@@ -20,27 +20,14 @@ const getMeme = async (id, name) => {
   }   
 }; 
 
-//EDIT THIS
 const insertMeme = async (meme) => {
   try {
     console.log('insert meme?', meme);
-    const [rows] = await promisePool.query('INSERT INTO memes (name, filename) VALUES (?, ?)',
-    [ meme.name, meme.filename ]);
+    const [rows] = await promisePool.query('INSERT INTO memes (name, filename, tag) VALUES (?, ?, ?)',
+    [ meme.name, meme.filename, meme.tag ]);
     return rows;
   } catch (e) {
     console.log('error', e.message);
-  }   
-}; 
-
-//EDIT THIS
-const updateMeme = async (meme) => {
-  try {
-    console.log('inser meme?', meme);
-    const [rows] = await promisePool.query('UPDATE memes SET name = ? WHERE memes.meme_id = ?',
-    [ meme.name, meme.id ]);
-    return rows;
-  } catch (e) {
-    console.log('updateMeme model crash', e.message);
   }   
 }; 
 
@@ -59,6 +46,5 @@ module.exports = {
   getAllMemes,
   getMeme,
   insertMeme,
-  updateMeme,
   deleteMeme,
 };
