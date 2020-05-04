@@ -36,9 +36,9 @@ const themeMap = {
    let li = ul.getElementsByTagName('li');
   
     
-    for (i = 0; i < li.length; i++) {
-      a = li[i].getElementsByTagName("a")[0];
-      txtValue = a.textContent || a.innerText;
+    for (let i = 0; i < li.length; i++) {
+      let a = li[i].getElementsByTagName("a")[0];
+      let txtValue = a.textContent || a.innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         li[i].style.display = "";
       } else {
