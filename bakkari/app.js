@@ -56,7 +56,6 @@ app.get('/login', checkNotAuthenticated, (request, response) => {
 app.post('/auth', function(request, response) {
 	var email = request.body.email;
 	var password = request.body.password;
-	console.log('CLICKED /AUTH');
 	if (email && password) {
 		pool.query('SELECT * FROM meme_user WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
 			if (results.length > 0) {

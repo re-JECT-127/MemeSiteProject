@@ -29,7 +29,6 @@ if (!errors.isEmpty()) {
 }
 
   const inMeme = {
-      /// EDIT THESE
     name: req.body.name,
     filename: req.file.filename,
   };
