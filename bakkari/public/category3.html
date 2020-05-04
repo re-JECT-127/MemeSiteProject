@@ -5,6 +5,7 @@
     <meta charset="utf8">
     <title>Memepage</title>
     <link href="./css/menu.css" rel="stylesheet">
+    <link href="./css/images.css" rel="stylesheet">
     <link
       href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700&display=swap"
       rel="stylesheet"
@@ -12,10 +13,10 @@
 </head>
 <body>
 <!-- Start of Menubar code -->	
-	<div class="menu">
+	<div  id="menu" class="menu">
       <ul class="menu2">
         <li class="logo">
-          <a href="main.html" class="menu-link">
+          <a href="" class="menu-link">
             <span class="link-text logo-text">MEMES</span>
             <svg aria-hidden="true"
              focusable="false"
@@ -31,7 +32,7 @@
         </li>
   
         <li class="menu-item">
-          <a id="nappi" href="popup.html" class="menu-link">
+          <a onclick="createCard()" id="nappi" class="menu-link">
             <svg aria-hidden="true"
             focusable="false"
              data-prefix="fas"
@@ -86,7 +87,7 @@
         </li>
   
         <li class="menu-item">
-          <a id="loggaus" class="menu-link">
+          <a href="login.html" id="loggaus" class="menu-link">
             <svg aria-hidden="true"
             focusable="false"
             data-prefix="fas"
@@ -124,56 +125,98 @@
         </li>
       </ul>
     </div>
-  
-    <main>
-      <!-- login -->
-      <div class="login-box">
-        <h1>Login</h1>
-        <form action="http://localhost:3000/auth" method="POST">
-        <div class="textbox">
-          <i class="user-box"></i>
-          <input type="text" name="email" placeholder="Email">
-        </div>
-      
-        <div class="textbox">
-          <i class="password-box"></i>
-          <input type="password" name="password" placeholder="Password">
-        </div>
-      
-        <input type="submit" class="btn" value="Sign in">
-      </form>
-
-        <input id="reg" type="button" class="btn" value="Register">
-      </div>
-        <!-- register -->
-        <div class="register-box">
-          <h1>Register</h1>
-          <form action="http://localhost:3000/user" method="post" id="addUserForm">
-          <div class="textbox">
-            <i class="user-box"></i>
-            <input type="text" name="name" placeholder="Username" required>
-          </div>
-  
-          <div class="textbox">
-            <i class="email-box"></i>
-            <input type="email" name="email" placeholder="Email" required>
-          </div>
-  
-          <div class="textbox">
-            <i class="password-box"></i>
-            <input type="password" name="password" placeholder="Password" pattern="(?=.*[A-Z]).{8,}" required>
-          </div>
-  
-          <input type="submit" class="btn" value="Create account">
-        </form>
-  
-        </div>
+     
 <!--End of menubar code-->
-
-
-
+<main id="card-holder">
+<section id="cards" class="cards">
+    <div class="card">
+        <div class="card-image">
+            <img src="kappa.png">
+        </div>
+        <div class="card-content">
+            <p class="card-title">
+                bla bla bla
+            </p>
+            <div class="card-info">
+                <p>jotain</p>
+                <p class="card-like">❤️</p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-image">
+            <img src="kappa.png">
+        </div>
+        <div class="card-content">
+            <p class="card-title">
+                bla bla bla
+            </p>
+            <div class="card-info">
+                <p>jotain</p>
+                <p class="card-like">❤️</p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-image">
+            <img src="kappa.png">
+        </div>
+        <div class="card-content">
+            <p class="card-title">
+                bla bla bla
+            </p>
+            <div class="card-info">
+                <p>jotain</p>
+                <p class="card-like">❤️</p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-image">
+            <img src="kappa.png">
+        </div>
+        <div class="card-content">
+            <p class="card-title">
+                bla bla bla
+            </p>
+            <div class="card-info">
+                <p>jotain</p>
+                <p class="card-like">❤️</p>
+            </div>
+        </div>
+    </div>
+    <div class="card">
+        <div class="card-image">
+            <img src="kappa.png">
+        </div>
+        <div class="card-content">
+            <p class="card-title">
+                bla bla bla
+            </p>
+            <div class="card-info">
+                <p>jotain</p>
+                <p class="card-like">❤️</p>
+            </div>
+        </div>
+    </div>
+<div class="card">
+    <div class="card-image">
+        <img src="kappa.png">
+    </div>
+    <div class="card-content">
+        <p class="card-title">
+            bla bla bla
+        </p>
+        <div class="card-info">
+            <p>jotain</p>
+            <p class="card-like">❤️</p>
+        </div>
+    </div>
+</div>
+</section>
+</main>
 <script src="./js/serialize.js"></script>
 <!--<script src="./js/main2.js"></script> -->
-<script defer src="js/login.js"></script>
+<script defer src="js/menu.js"></script>
 </body>
 </html>

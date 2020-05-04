@@ -47,7 +47,6 @@ const themeMap = {
    }
 });
 
-
 let menu = document.getElementById('menu'); //THIS GIVES ERROR, BUT REGISTER  DOES NOT WORK WITHOUT:DD 
   menu.addEventListener("mouseover", event => { //also this code does nothing
     let koko = 200 
@@ -59,15 +58,14 @@ let menu = document.getElementById('menu'); //THIS GIVES ERROR, BUT REGISTER  DO
     
    });
 
-
-   addUserForm.addEventListener('submit', async (evt) => {
-    evt.preventDefault();
-    const fd = new FormData(addUserForm);
-    const fetchOptions = {
-      method: 'POST',
-      body: fd,
-    };
-    const response = await fetch(url + '/user', fetchOptions);
-    const json = await response.json();
-    console.log('add response', json);
-  });
+addUserForm.addEventListener('submit', async (evt) => {
+  evt.preventDefault();
+  const fd = new FormData(addUserForm);
+  const fetchOptions = {
+    method: 'POST',
+    body: fd,
+  };
+  const response = await fetch(url + '/user', fetchOptions);
+  const json = await response.json();
+  console.log('add response', json);
+});

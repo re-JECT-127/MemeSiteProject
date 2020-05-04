@@ -126,48 +126,30 @@
     </div>
   
     <main>
-      <!-- login -->
-      <div class="login-box">
-        <h1>Login</h1>
-        <form action="http://localhost:3000/auth" method="POST">
+     
+        <!-- profile -->
+      <div class="profile-box">
+          <div id="image-container">
+        <img id="image-container" src="kappa.png" alt="">
+    </div>
         <div class="textbox">
           <i class="user-box"></i>
-          <input type="text" name="email" placeholder="Email">
+          <input type="text" placeholder="Username">
+        </div>
+
+        <div class="textbox">
+          <i class="email-box"></i>
+          <input type="text" placeholder="Email">
         </div>
       
         <div class="textbox">
           <i class="password-box"></i>
-          <input type="password" name="password" placeholder="Password">
+          <input type="password" placeholder="Password">
         </div>
       
-        <input type="submit" class="btn" value="Sign in">
-      </form>
-
-        <input id="reg" type="button" class="btn" value="Register">
+        <input type="submit" class="btn" value="Save changes">
+        
       </div>
-        <!-- register -->
-        <div class="register-box">
-          <h1>Register</h1>
-          <form action="http://localhost:3000/user" method="post" id="addUserForm">
-          <div class="textbox">
-            <i class="user-box"></i>
-            <input type="text" name="name" placeholder="Username" required>
-          </div>
-  
-          <div class="textbox">
-            <i class="email-box"></i>
-            <input type="email" name="email" placeholder="Email" required>
-          </div>
-  
-          <div class="textbox">
-            <i class="password-box"></i>
-            <input type="password" name="password" placeholder="Password" pattern="(?=.*[A-Z]).{8,}" required>
-          </div>
-  
-          <input type="submit" class="btn" value="Create account">
-        </form>
-  
-        </div>
 <!--End of menubar code-->
 
 
