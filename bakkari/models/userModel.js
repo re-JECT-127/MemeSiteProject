@@ -1,6 +1,10 @@
 'use strict';
 const pool = require('../database/db');
+const express = require('express');
+var passport = require('passport');
 const promisePool = pool.promise();
+var bcrypt = require('bcryptjs');
+const saltRounds = 10;
 
 
 const getUserList = async () =>{
@@ -42,34 +46,38 @@ const getUserLogin = (email) => {
   return user[0];
 };
 
-const insertUser = async (user) => {
+const insertUser = async (user, req, res) => {
+ await bcrypt.hash(user.password, saltRounds, function(err, hash) {
+    // Store hash in your password DB.
+
   try {
     console.log('insert user?', user);
-    const [rows] = await promisePool.query('INSERT INTO meme_user (name, email, password) VALUES (?, ?, ?)',
-    [ user.name, user.email, user.password ]);
+    const [rows] =  promisePool.query('INSERT INTO meme_user (name, email, password) VALUES (?, ?, ?)',
+    [ user.name, user.email, hash ]);
+
     return rows;
   } catch (e) {
     console.log('error', e.message);
   }   
+});
+
 }; 
 
-const updateUser = async (user) => {
-  try {
-    console.log('update user', user);
-    const [rows] = await promisePool.query('UPDATE meme_user SET name = ?, email = ?, password = ? WHERE wop_user.user_id = ?',
-    [ user.name, user.email, user.password ]);
-    return rows;
-  } catch (e) {
-    console.log('updateUser model crash', e.message);
-  }   
-}; 
+passport.serializeUser(function(user_id, done) {
+  done(null, user_id);
+});
+
+passport.deserializeUser(function(user_id, done) {
+  User.findById(id, function (err, user) {
+    done(null, user_id);
+  });
+});
+
 
 module.exports = {
-  
   getUser,
   getUserLogin,
   getUserList,
   insertUser,
-  updateUser,
 };
 

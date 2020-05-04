@@ -2,12 +2,14 @@
 
 require('dotenv').config();
 const cors = require('cors');
-var mysql = require('mysql'); //added
 const express = require('express');
-var session = require('express-session'); //added
-var bodyParser = require('body-parser'); //added
-var path = require('path'); //added
+var session = require('express-session'); 
+const bcrypt = require('bcrypt');
+var passport = require('passport');
+var bodyParser = require('body-parser'); 
+var path = require('path');
 const pool = require('./database/db'); // Ok this didn't work before. now it works. brilliant
+
 
 const app = express();
 const port = 3000;
@@ -33,23 +35,27 @@ app.use(express.urlencoded({ extended: true })) // for parsing application/x-www
 app.use(express.static('public'));
 app.use(express.static('uploads'));
 
+app.use(session({
+	secret: '12345', //VERY SECRET HERE
+	resave: false,
+	saveUninitialized: false,
+}));
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/meme', memeRoute);
 app.use('/user', userRoute);
 app.use('/tag', tagRoute);
 
-
-
-app.use(session({
-	secret: '12345', //VERY SECRET HERE
-	resave: true,
-	saveUninitialized: true
-}));
 
 app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
 app.get('/', checkAuthenticated, function(request, response) {
 	//response.sendFile(path.join(__dirname + './index123.html'));
+	console.log(req.user);
+	console.log(req.isAuthenticated());
 	response.redirect('./index123.html');
 });
 
@@ -60,10 +66,14 @@ app.get('/login', checkNotAuthenticated, (request, response) => {
 app.post('/auth', function(request, response) {
 	var email = request.body.email;
 	var password = request.body.password;
-	console.log('CLICKED /AUTH');
 	if (email && password) {
-		pool.query('SELECT * FROM meme_user WHERE email = ? AND password = ?', [email, password], function(error, results, fields) {
-			if (results.length > 0) {
+		pool.query('SELECT password FROM meme_user WHERE email = ?', [email], async function(err, result, fields) {
+			if(err) throw err;
+			const hash = result[0].password;
+			const isMatch = await bcrypt.compare(password, hash);
+			console.log('hash status: ' + isMatch);
+	
+			if (isMatch) {
 				request.session.loggedin = true;
 				request.session.email = email;
 				response.redirect('/home');
@@ -71,11 +81,12 @@ app.post('/auth', function(request, response) {
 				response.send('Incorrect Email and/or Password!');
 			}			
 			response.end();
-		});
-	} else {
+	});
+		}else {
 		response.send('Please enter Email and Password!');
 		response.end();
-	}
+		}
+	
 });
 
 app.get('/home', function(request, response) {
@@ -106,4 +117,4 @@ function checkNotAuthenticated(request,response, next) {
 	return next();
 };
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+app.listen(port, () => console.log(`Meme app listening on port ${port}!`));
