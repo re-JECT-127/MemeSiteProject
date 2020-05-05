@@ -5,7 +5,7 @@ const cors = require('cors');
 const express = require('express');
 var session = require('express-session'); 
 const bcrypt = require('bcrypt');
-var passport = require('passport');
+var passport = require('passport'); //voi poistaa?
 var bodyParser = require('body-parser'); 
 var path = require('path');
 const pool = require('./database/db'); // Ok this didn't work before. now it works. brilliant
@@ -41,8 +41,8 @@ app.use(session({
 	saveUninitialized: false,
 }));
 
-app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.initialize()); // VOi poistaa?
+app.use(passport.session()); //voi poistaa?
 
 app.use('/meme', memeRoute);
 app.use('/user', userRoute);
@@ -54,8 +54,6 @@ app.use(bodyParser.json());
 
 app.get('/', checkAuthenticated, function(request, response) {
 	//response.sendFile(path.join(__dirname + './index123.html'));
-	console.log(req.user);
-	console.log(req.isAuthenticated());
 	response.redirect('./index123.html');
 });
 
