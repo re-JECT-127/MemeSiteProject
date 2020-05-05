@@ -1,7 +1,5 @@
 'use strict';
 const pool = require('../database/db');
-const express = require('express');
-var passport = require('passport');
 const promisePool = pool.promise();
 var bcrypt = require('bcryptjs');
 const saltRounds = 10;
@@ -47,33 +45,21 @@ const getUserLogin = (email) => {
 };
 
 const insertUser = async (user, req, res) => {
- await bcrypt.hash(user.password, saltRounds, function(err, hash) {
-    // Store hash in your password DB.
-
-  try {
-    console.log('insert user?', user);
-    const [rows] =  promisePool.query('INSERT INTO meme_user (name, email, password) VALUES (?, ?, ?)',
-    [ user.name, user.email, hash ]);
-
-    return rows;
-  } catch (e) {
-    console.log('error', e.message);
-  }   
-});
-
-}; 
-
-passport.serializeUser(function(user_id, done) {
-  done(null, user_id);
-});
-
-passport.deserializeUser(function(user_id, done) {
-  User.findById(id, function (err, user) {
-    done(null, user_id);
-  });
-});
-
-
+  await bcrypt.hash(user.password, saltRounds, function(err, hash) {
+     // Store hash in your password DB.
+ 
+   try {
+     console.log('insert user?', user);
+     const [rows] =  promisePool.query('INSERT INTO meme_user (name, email, password) VALUES (?, ?, ?)',
+     [ user.name, user.email, hash ]);
+ 
+     return rows;
+   } catch (e) {
+     console.log('error', e.message);
+   }   
+ });
+ }; 
+ 
 module.exports = {
   getUser,
   getUserLogin,
