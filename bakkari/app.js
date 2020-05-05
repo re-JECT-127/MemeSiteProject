@@ -54,11 +54,11 @@ app.use(bodyParser.json());
 
 app.get('/', checkAuthenticated, function(request, response) {
 	//response.sendFile(path.join(__dirname + './index123.html'));
-	response.redirect('./index123.html');
+	response.redirect('/index123.html');
 });
 
 app.get('/login', checkNotAuthenticated, (request, response) => {
-	response.redirect('./login.html');
+	response.redirect('http://10.114.34.44/app/login.html');
 })
 
 app.post('/auth', function(request, response) {
@@ -74,7 +74,7 @@ app.post('/auth', function(request, response) {
 			if (isMatch) {
 				request.session.loggedin = true;
 				request.session.email = email;
-				response.redirect('/home');
+				response.redirect('/app/home');
 			} else {
 				response.send('Incorrect Email and/or Password!');
 			}			
@@ -90,7 +90,7 @@ app.post('/auth', function(request, response) {
 app.get('/home', function(request, response) {
 	if (request.session.loggedin) {
 		//response.send('Welcome back, ' + request.session.email + '!');
-		response.redirect('/index123.html');
+		response.redirect('http://10.114.34.44/app/index123.html');
 	} else {
 		response.send('Please login to view this page!');
 	}
@@ -105,12 +105,12 @@ function checkAuthenticated(request,response, next) {
 	};
 	console.log('NO AUTH');
 
-	return response.redirect('/login');
+	return response.redirect('/app/login');
 };
 
 function checkNotAuthenticated(request,response, next) {
 	if (request.session.loggedin) {
-		return response.redirect('/');
+		return response.redirect('/app/');
 	};
 	return next();
 };
