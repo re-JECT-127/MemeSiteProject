@@ -100,6 +100,9 @@ addMemeForm.addEventListener('submit', async (evt) => {
     cardInfo.appendChild(title2);
     cardInfo.appendChild(like);
 
+
+    
+
     console.log("toimiiko")
    };
 
