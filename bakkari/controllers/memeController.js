@@ -1,6 +1,7 @@
 'use strict';
 const memeModel = require('../models/memeModel');
 const {validationResult} = require('express-validator');
+const makeThumbnail = require('../public/js/resize').makeThumbnail;
 const memes = memeModel.memes;
 
 
@@ -16,6 +17,7 @@ const meme_get = async (req, res) => {
 };
 
 const meme_post = async (req, res) => {
+  
   console.log('meme_post', req.body, req.file);
   let errors = validationResult(req);
 //if(!req.file.mimetype.includes('image')){
@@ -36,6 +38,7 @@ if (!errors.isEmpty()) {
   };
 
 try {
+  const thumb = await makeThumbnail(req.file.path, './thumbnails/'+req.file.filename);
   const meme = await memeModel.insertMeme(inMeme);
   console.log('inserted', meme);
   //res.send(`added meme: ${meme.insertID}`);

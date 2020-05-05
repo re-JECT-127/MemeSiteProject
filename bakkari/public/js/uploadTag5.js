@@ -22,7 +22,7 @@ memes.forEach((meme) => {
     image.classList.add('resp');
 
 
-  
+    if(meme.tag === '5'){
     cardDiv.className = "card";
     cardImage.className = "card-image";
     cardContent.className = "card-content";
@@ -43,7 +43,7 @@ memes.forEach((meme) => {
 
     title.innerHTML = meme.name;
     //title2.innerHTML = user.name;
-    
+    }
 })};
 
 const getMeme = async () => {

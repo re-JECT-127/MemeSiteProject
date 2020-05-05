@@ -1,5 +1,5 @@
 'use strict'
-const url = 'http://localhost:3000';
+
 const addMemeForm = document.querySelector('#addMemeForm');
 const tagLists = document.querySelectorAll('.add-tag');
 
@@ -26,7 +26,7 @@ const themeMap = {
   }
   
   document.getElementById('themeButton').onclick = toggleTheme;
-  
+
   let menu = document.getElementById('menu');
   menu.addEventListener("mouseover", event => {
     let koko = 20 

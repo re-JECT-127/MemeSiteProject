@@ -30,6 +30,7 @@ const tagRoute = require('./routes/tagRoute');
 // });
 
 app.use(cors());
+app.use('/thumbnails', express.static('thumbnails'));
 app.use(express.json()) // for parsing application/json
 app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 app.use(express.static('public'));

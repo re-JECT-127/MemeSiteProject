@@ -28,48 +28,7 @@ const themeMap = {
   document.getElementById('themeButton').onclick = toggleTheme;
  
 
-   // create tag options to <select>
-   const createTagOptions = (tags) => {
-    tagLists.forEach((list) => {
-      // clear tag list
-      list.innerHTML = '';
-      tags.forEach((tag) => {
-        // create options with DOM methods
-        const option = document.createElement('option');
-        option.value = tag.tag_id;
-        option.innerHTML = tag.name;
-        option.classList.add('light-border');
-        list.appendChild(option);
-      });
-    });
-  };
-  
-  // get tags to form options
-  const getTags = async () => {
-    try {
-      const response = await fetch(url + '/tag');
-      const tags = await response.json();
-      createTagOptions(tags);
-    }
-    catch (e) {
-      console.log(e.message);
-    }
-  };
-  getTags();
-  
-
-addMemeForm.addEventListener('submit', async (evt) => {
-  evt.preventDefault();
-  const fd = new FormData(addMemeForm);
-  const fetchOptions = {
-    method: 'POST',
-    body: fd,
-  };
-  const response = await fetch(url + '/meme', fetchOptions);
-  const json = await response.json();
-  console.log('add response', json);
-  getMeme();
-});
+   
 
 let menu = document.getElementById('menu');
   menu.addEventListener("mouseover", event => {
@@ -89,39 +48,4 @@ let menu = document.getElementById('menu');
     paska.style.transitionDuration = "600ms";
     
    });
-    let cardHolder = document.getElementById('cards')
-   function createCard (){
-    let cardDiv = document.createElement('div');
-    let cardImage = document.createElement('div');
-    let image = document.createElement('img');
-    let cardContent = document.createElement('div');
-    let title = document.createElement('p');
-    let cardInfo = document.createElement('div');
-    let title2 = document.createElement('p');
-    let like = document.createElement('p');
-
-    cardDiv.className = "card";
-    cardImage.className = "card-image";
-    cardContent.className = "card-content";
-    title.className = "card-title";
-    cardInfo.className = "card-info";
-    like.className = "card-like";
-
-    cardHolder.appendChild(cardDiv);
-    cardDiv.appendChild(cardImage);
-    cardImage.appendChild(image);
-    cardDiv.appendChild(cardContent);
-    cardContent.appendChild(title);
-    cardContent.appendChild(cardInfo);
-    cardInfo.appendChild(title2);
-    cardInfo.appendChild(like);
-
-    console.log("toimiiko")
-   };
-
-
-
-
-
-
-  
+   
