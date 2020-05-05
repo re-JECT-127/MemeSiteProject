@@ -17,7 +17,7 @@ memes.forEach((meme) => {
     let title2 = document.createElement('p');
     let like = document.createElement('p');
 
-    image.src = url + '/' + meme.filename;
+    image.src = url + '/thumbnails/' + meme.filename;
     image.alt = meme.name;
     image.classList.add('resp');
 
