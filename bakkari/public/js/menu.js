@@ -28,10 +28,10 @@ const themeMap = {
   document.getElementById('themeButton').onclick = toggleTheme;
  
 
-   // create user options to <select>
+   // create tag options to <select>
    const createTagOptions = (tags) => {
     tagLists.forEach((list) => {
-      // clear user list
+      // clear tag list
       list.innerHTML = '';
       tags.forEach((tag) => {
         // create options with DOM methods
@@ -44,7 +44,7 @@ const themeMap = {
     });
   };
   
-  // get users to form options
+  // get tags to form options
   const getTags = async () => {
     try {
       const response = await fetch(url + '/tag');
