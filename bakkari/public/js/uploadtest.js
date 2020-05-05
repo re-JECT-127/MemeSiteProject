@@ -1,5 +1,5 @@
 let cardHolder = document.getElementById('cards1');
-
+const createMemeCards = (memes) => {
 memes.forEach((meme) => {
     // create li with DOM methods
 
@@ -36,4 +36,4 @@ memes.forEach((meme) => {
     title.innerHTML = meme.name;
     title2.innerHTML = user.name;
 
-});
+})};
