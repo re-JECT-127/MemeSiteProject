@@ -16,6 +16,7 @@ const meme_get = async (req, res) => {
 };
 
 const meme_post = async (req, res) => {
+  resize.makeThumbnail(req.file.path, req.file.filename);
   console.log('meme_post', req.body, req.file);
   let errors = validationResult(req);
 //if(!req.file.mimetype.includes('image')){
