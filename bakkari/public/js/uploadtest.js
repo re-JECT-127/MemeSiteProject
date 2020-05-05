@@ -1,8 +1,14 @@
+'use strict'
+const url = 'http://localhost:3000';
 let cardHolder = document.getElementById('cards1');
+console.log('NYT OLLAAN KATEGORIASSA');
 const createMemeCards = (memes) => {
+    console.log('NYT OLLAAN CREATESSA');
 memes.forEach((meme) => {
     // create li with DOM methods
+    console.log('NYT OLLAAN LOOPISSA');
 
+    console.log('TÄMÄ ON UUSI: ' +meme);
     let cardDiv = document.createElement('div');
     let cardImage = document.createElement('div');
     let image = document.createElement('img');
@@ -11,6 +17,10 @@ memes.forEach((meme) => {
     let cardInfo = document.createElement('div');
     let title2 = document.createElement('p');
     let like = document.createElement('p');
+
+    image.src = url + '/' + meme.filename;
+    image.alt = meme.name;
+    image.classList.add('resp');
 
     cardDiv.className = "card";
     cardImage.className = "card-image";
@@ -29,11 +39,20 @@ memes.forEach((meme) => {
     cardInfo.appendChild(title2);
     cardInfo.appendChild(like);
 
-    image.src = url + '/' + meme.filename;
-    image.alt = meme.name;
-    image.classList.add('resp');
 
     title.innerHTML = meme.name;
-    title2.innerHTML = user.name;
+    //title2.innerHTML = user.name;
 
 })};
+
+const getMeme = async () => {
+    try {
+      const response = await fetch(url + '/meme');
+      const memes = await response.json();
+      createMemeCards(memes);
+    }
+    catch (e) {
+      console.log(e.message);
+    }
+  };
+  getMeme();
