@@ -1,5 +1,5 @@
 'use strict'
-const url = 'http://localhost:3000';
+const url = 'http://10.114.34.44/app/';
 const addUserForm = document.querySelector('#addUserForm');
 
 const themeMap = {
