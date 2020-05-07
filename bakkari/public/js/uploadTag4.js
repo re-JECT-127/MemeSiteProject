@@ -1,5 +1,5 @@
 'use strict'
-const url = 'http://localhost:3000';
+const url = 'http://10.114.34.44/app/';
 let cardHolder = document.getElementById('cards1');
 console.log('NYT OLLAAN KATEGORIASSA');
 const createMemeCards = (memes) => {
