@@ -5,10 +5,8 @@ const cors = require('cors');
 const express = require('express');
 var session = require('express-session'); 
 const bcrypt = require('bcrypt');
-var passport = require('passport'); //voi poistaa?
 var bodyParser = require('body-parser'); 
-var path = require('path');
-const pool = require('./database/db'); // Ok this didn't work before. now it works. brilliant
+const pool = require('./database/db'); 
 
 
 const app = express();
@@ -17,17 +15,6 @@ const memeRoute = require('./routes/memeRoute');
 const userRoute = require('./routes/userRoute');
 const tagRoute = require('./routes/tagRoute');
 
-
-
-//instead of pool have to use this. pool just refuses to work... it worked on mi other test app tho... so who knows... might be a plot of Sauron.
-//EDIT: dont need this nightmare no more....
-// var connection = mysql.createConnection({ 
-// 	host     : 'localhost',
-// 	user     : '', //ADD THIS
-// 	password : '', //ADD THIS
-//     database : '', //ADD THIS
-//     port     :  3306
-// });
 
 app.use(cors());
 app.use('/thumbnails', express.static('thumbnails'));
@@ -42,8 +29,7 @@ app.use(session({
 	saveUninitialized: false,
 }));
 
-app.use(passport.initialize()); // VOi poistaa?
-app.use(passport.session()); //voi poistaa?
+
 
 app.use('/meme', memeRoute);
 app.use('/user', userRoute);
@@ -54,7 +40,6 @@ app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
 app.get('/', checkAuthenticated, function(request, response) {
-	//response.sendFile(path.join(__dirname + './index123.html'));
 	response.redirect('/index123.html');
 });
 
@@ -90,7 +75,6 @@ app.post('/auth', function(request, response) {
 
 app.get('/home', function(request, response) {
 	if (request.session.loggedin) {
-		//response.send('Welcome back, ' + request.session.email + '!');
 		response.redirect('http://10.114.34.44/app/index123.html');
 	} else {
 		response.send('Please login to view this page!');

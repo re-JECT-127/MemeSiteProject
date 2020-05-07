@@ -2,8 +2,6 @@
 const userModel = require('../models/userModel');
 const {validationResult} = require('express-validator');
 
-//const users = userModel.users;
-
 const user_list_get = async (req, res) => {
   const users = await userModel.getUserList();
   res.json(users);
@@ -37,7 +35,6 @@ const user_post = async (req, res) => {
       console.log(emailReserved);  
     const user = await userModel.insertUser(req.body);
     console.log('inserted', user);
-    //res.send(`Registered with email: ${req.body.email}`);
     res.redirect('/');
     } else {
       res.send(`Sorry, email ${req.body.email} allready exists.`);

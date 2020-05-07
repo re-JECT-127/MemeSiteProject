@@ -25,7 +25,6 @@ const tag_post = async (req, res) => {
   try {
     const tag = await tagModel.insertTag(req.body);
     console.log('inserted', tag);
-    //res.send(`Registered with email: ${req.body.email}`);
     res.redirect('/');
     } catch (e){
     console.error('problem with user_post in tagController', e);

@@ -4,7 +4,6 @@ let cardHolder = document.getElementById('cards1');
 console.log('NYT OLLAAN KATEGORIASSA');
 const createMemeCards = (memes) => {
 memes.forEach((meme) => {
-    // create li with DOM methods
     console.log('NYT OLLAAN LOOPISSA');
 
     console.log('TÄMÄ ON UUSI: ' +meme);

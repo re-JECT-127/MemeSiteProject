@@ -6,7 +6,6 @@ const saltRounds = 10;
 
 
 const getUserList = async () =>{
-//SELECT user_id, name, email FROM wop_user
 try {
   const [rows] = await promisePool.query('SELECT user_id, name, email FROM meme_user');
   return rows;
@@ -16,10 +15,6 @@ try {
 };
 
 const getUser = async (id) => {
-    // SELECT * FROM wop_user WHERE user_id = ?
-  // remember in controller do:
-  // delete user.password;
-  //before sending the user back
   try {
     const [rows] = await promisePool.query('SELECT user_id, name, email FROM meme_user WHERE user_id = ?', [ id ]);
     return rows[0];

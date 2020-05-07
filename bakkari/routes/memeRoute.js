@@ -1,5 +1,5 @@
 'use strict';
-// memeRoute
+
 const express = require('express');
 const router = express.Router();
 const {body, sanitizeBody} = require('express-validator');
@@ -15,10 +15,8 @@ router.post('/',  upload.single('meme'),
 [body('name', 'name is required').notEmpty()], (req, res) => {
   console.log('tiedosto: ', req.file);
   memeController.meme_post(req, res);
-  //res.send('With this endpoint you can add memes');
 });
 
-//CHANGE THESE
 router.put('/',
 [body('name', 'name is requires').notEmpty()],
 memeController.meme_put);

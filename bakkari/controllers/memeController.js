@@ -20,18 +20,14 @@ const meme_post = async (req, res) => {
   
   console.log('meme_post', req.body, req.file);
   let errors = validationResult(req);
-//if(!req.file.mimetype.includes('image')){
-//errors = [{msg : 'ei oo kuva'}];
-//};
+
 console.log(errors);
 
 if (!errors.isEmpty()) {
   return res.status(422).json({ errors: errors.array() });
-  console.log(errors);
 }
 
   const inMeme = {
-      /// EDIT THESE
     name: req.body.name,
     filename: req.file.filename,
     tag: req.body.tag,
@@ -41,7 +37,6 @@ try {
   const thumb = await makeThumbnail(req.file.path, './thumbnails/'+req.file.filename);
   const meme = await memeModel.insertMeme(inMeme);
   console.log('inserted', meme);
-  //res.send(`added meme: ${meme.insertID}`);
   res.redirect('/');
 } catch (e){
   console.error('problem with meme_post in memeController', e);
