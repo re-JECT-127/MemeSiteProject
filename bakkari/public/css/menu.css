@@ -150,11 +150,13 @@
   
   
   
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 1300px) {
     .menu {
       bottom: 0;
       width: 100vw;
       height: 5rem;
+      z-index: 1000;
+      
     }
   
     .logo {
@@ -175,11 +177,12 @@
   }
   
   
-  @media only screen and (min-width: 600px) {
+  @media only screen and (min-width: 1300px) {
     .menu {
       top: 0;
       width: 5rem;
       height: 100vh;
+      z-index: 1000;
     }
   
     .menu:hover {
