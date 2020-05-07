@@ -1,5 +1,5 @@
 'use strict'
-const url = 'http://10.114.34.44/app/';
+const url = 'http://localhost:3000';
 const addMemeForm = document.querySelector('#addMemeForm');
 
 const themeMap = {
@@ -51,10 +51,10 @@ const themeMap = {
   menu2.addEventListener("mouseover", event => {
     let koko = 20 
     let categoryBox = document.getElementById('category') 
-    
+    if(screen.width >= 1300){
     categoryBox.style.marginLeft = `${koko}%`;
     categoryBox.style.transitionDuration = "600ms";
-    
+    }
    });
    menu2.addEventListener("mouseout", event => {
     let koko = 6 

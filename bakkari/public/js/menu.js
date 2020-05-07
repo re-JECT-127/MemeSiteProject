@@ -1,5 +1,5 @@
 'use strict'
-const url = 'http://10.114.34.44/app/';
+const url = 'http://localhost:3000';
 const addMemeForm = document.querySelector('#addMemeForm');
 const tagLists = document.querySelectorAll('.add-tag');
 
@@ -31,21 +31,23 @@ const themeMap = {
    
 
 let menu = document.getElementById('menu');
+
   menu.addEventListener("mouseover", event => {
     let koko = 20 
-    let paska = document.getElementById('card-holder') 
-    
-    paska.style.marginLeft = `${koko}%`;
-    paska.style.transitionDuration = "600ms";
+    let kortti = document.getElementById('card-holder') 
+    if(screen.width >= 1300){
+    kortti.style.marginLeft = `${koko}%`;
+    kortti.style.transitionDuration = "600ms";
+    }
     
    });
    menu.addEventListener("mouseout", event => {
     let koko = 0 
     
-    let paska = document.getElementById('card-holder') 
+    let kortti = document.getElementById('card-holder') 
     
-    paska.style.marginLeft = `${koko}%`;
-    paska.style.transitionDuration = "600ms";
+    kortti.style.marginLeft = `${koko}%`;
+    kortti.style.transitionDuration = "600ms";
     
    });
    
